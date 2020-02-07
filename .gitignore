@@ -137,6 +137,7 @@ dmypy.json
 
 #csv
 *.csv
-final_report.html
-final_report.md
 
+#final report stuf
+final_report.md
+doc/final_report_cache/*
