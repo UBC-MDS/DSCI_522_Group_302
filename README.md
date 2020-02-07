@@ -24,7 +24,30 @@ The final report can be found [here](https://github.com/UBC-MDS/DSCI_522_Group_3
 
 ## Usage
 
-To replicate the above analysis, please clone this Github repository, install the dependencies below, and run the following command in the terminal at the root directory of this project (script takes 15-20 minutes to fully execute):
+There are two ways to replicate the analysis on your local machine. 
+
+### Method 1: Using Docker
+
+Note - the instructions below depends on running this in a unix shell (e.g., terminal or Git Bash), if you are using Windows Command Prompt, replace /$(pwd) with PATH_ON_YOUR_COMPUTER.
+
+1. Install and run [Docker](https://www.docker.com/get-started)
+
+2. Clone this Github repository and run the following command at the command line/terminal from the root directory of this project:
+
+```
+docker run --rm -v /$(pwd):/home/DSCI_522_Group_302 v5y8/group_302_environment make -C /home/DSCI_522_Group_302 all
+```
+
+3. Toreset the repo to a clean slate, , run the following command at the command line/terminal from the root directory of this project:
+
+```
+docker run --rm -v /$(pwd):/home/DSCI_522_Group_302 v5y8/group_302_environment make -C /home/DSCI_522_Group_302 clean
+```
+
+
+### Method 2: Using Make 
+ 
+This method require all dependencies below to be installed before running the analysis. Run the following command in the terminal at the root directory of this project (script takes 15-20 minutes to fully execute):
 
 ```
 make all
@@ -35,6 +58,7 @@ To reset this repository to a clean state, run the following command in the term
 ```
 make clean
 ```
+
 
 ## Dependencies diagram of Makefile
 
