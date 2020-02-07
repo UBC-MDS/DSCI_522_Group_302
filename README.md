@@ -36,6 +36,13 @@ To reset this repository to a clean state, run the following command in the term
 make clean
 ```
 
+## Dependencies diagram of Makefile
+
+The relationships between the scripts, data files and final outputs are summarised in the dependency diagram below.
+
+![Makefile_diagram](img/Makefile.png)
+
+
 ## Dependencies
 
 Python 3.7.5 and Python Packages:
