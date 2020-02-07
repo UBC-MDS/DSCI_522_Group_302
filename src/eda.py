@@ -37,23 +37,28 @@ def main(file_path_in, file_path_out):
     
     #Create correlation plot to look at features 
     
-    vehicles_corr = data_train.corr().reset_index().rename(columns ={'index':'Var1'}).melt(id_vars = ['Var1'],
+    horse_corr = data_train.corr().reset_index().rename(columns = {'index':'Var1'}).melt(id_vars = ['Var1'],
                                                                                     value_name = 'Correlation',
                                                                                     var_name = 'Var2')
-    base = alt.Chart(vehicles_corr).encode(
-        alt.Y('Var1:N'), alt.X('Var2:N'))  
+    #removing diagonal correlation with the same features
+    horse_corr = horse_corr[horse_corr.Correlation != 1] 
+
+    base = alt.Chart(horse_corr).encode(
+        alt.Y('Var1:N'),
+        alt.X('Var2:N')) 
     heatmap = base.mark_rect().encode(
-        alt.Color('Correlation:Q',
-                  scale=alt.Scale(scheme='viridis')))
+         alt.Color('Correlation:Q',
+                    scale=alt.Scale(scheme='viridis')))
     text = base.mark_text(baseline='middle').encode(
-        text=alt.Text('Correlation:Q', format='.2'),
+        text=alt.Text('Correlation:Q', format='.1'),
         color=alt.condition(
-        alt.datum.Correlation >= 0.90,
-        alt.value('black'),
-        alt.value('white')))    
-    total_heatmap =(heatmap + text).properties(
+            alt.datum.Correlation >= 0.90,
+            alt.value('black'),
+            alt.value('white')))
+    total_heatmap = (heatmap + text).properties(
         width = 500, height = 500,
-        title = "Pearson's correlation")
+        title = "Pearson's correlation between horse features")
+
     total_heatmap.save(f"{file_path_out}/correlation_plot.png")
     
     
@@ -73,12 +78,11 @@ def main(file_path_in, file_path_out):
     data_train = data_train[~data_train['country'].isnull()]
 
     country_dist= alt.Chart(data_train).mark_boxplot().encode(
-        x=alt.X('country:N', title = "Country"),
-        y=alt.Y('plc:Q', title = "Placement")
-        ).properties(height=300, width= 500, 
-                     title="Distribution of numerical placement values of horses by Country"
-                    ).configure_axis(titleFontSize=15, labelFontSize=15
-                    ).configure_title(fontSize=16)
+        y=alt.Y('country:N', title = "Country"),
+        x=alt.X('plc:Q', title = "Placement"),
+    ).properties(height=300, width= 500, title="Distribution of numerical placement values of horses by Country"
+    ).configure_axis(titleFontSize=15, labelFontSize=15
+    ).configure_title(fontSize=16)
     
     country_dist.save(f"{file_path_out}/country_dist.png")
 
