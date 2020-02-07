@@ -20,7 +20,7 @@ Please ensure the above github repository is used for downloading with Makefile.
 
 ## Final Report
 
-The final report can be found [here](https://github.com/UBC-MDS/DSCI_522_Group_302/blob/master/doc/final_report.md).
+The final report can be found [here](https://github.com/UBC-MDS/DSCI_522_Group_302/blob/master/doc/final_report.html).
 
 ## Usage
 
