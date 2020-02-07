@@ -44,7 +44,7 @@ main <- function(file_path, out_dir){
   
   #Plot line graph for Average numerical placement of horses by win odds
   p1 <- ggplot(win_odds) +
-    geom_line(aes(x=winodds, y=place_mean), colour= "blue") + 
+    geom_point(aes(x=winodds, y=place_mean), colour= "blue") + 
     labs(title= "Average numerical placement of horses by win odds", x= "Win odds", y= "Placement") +
     scale_y_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10))
   
