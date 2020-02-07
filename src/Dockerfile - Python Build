@@ -1,0 +1,38 @@
+# Derek Kruszewski, 2020-02-07
+FROM continuumio/anaconda3
+
+RUN apt-get update
+
+# Install R
+RUN apt-get install r-base r-base-dev -y
+RUN apt-get install curl libssl-dev libcurl4-openssl-dev libpq-dev libxml2-dev -y
+
+# Install R packages
+RUN Rscript -e "install.packages('tidyverse')"
+RUN Rscript -e "install.packages('knitr')"
+RUN Rscript -e "install.packages('docopt')"
+
+# Install Python packages
+RUN conda install pandas -y
+RUN conda install docopt -y
+RUN conda install numpy -y
+RUN conda install scikit-learn -y
+RUN conda install -c conda-forge altair -y
+RUN conda install -c conda-forge pandas-profiling -y
+RUN conda install matplotlib -y
+RUN conda install seaborn -y
+RUN conda install selenium -y
+
+# Install Chromedriver for altair
+RUN apt install -y chromium 
+RUN apt-get install -y libnss3 
+RUN apt-get install unzip
+
+RUN wget -q "https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip" -O /tmp/chromedriver.zip \
+    && unzip /tmp/chromedriver.zip -d /usr/bin/ \
+    && rm /tmp/chromedriver.zip && chown root:root /usr/bin/chromedriver && chmod +x /usr/bin/chromedriver
+
+
+
+
+
