@@ -20,11 +20,11 @@ Please ensure the above github repository is used for downloading with Makefile.
 
 ## Final Report
 
-The final report can be found [here](https://github.com/UBC-MDS/DSCI_522_Group_302/blob/master/doc/final_report.html).
+The final report can be found [here](https://github.com/UBC-MDS/DSCI_522_Group_302/blob/master/doc/final_report.html), and can be viewed [here](http://htmlpreview.github.io/?https://github.com/UBC-MDS/DSCI_522_Group_302/blob/master/doc/final_report.html).
 
 ## Usage
 
-There are two ways to replicate the analysis on your local machine. 
+There are two ways to replicate the analysis on your local machine. Either method will take 15-20 minutes to fully execute.
 
 ### Method 1: Using Docker
 
@@ -38,16 +38,15 @@ Note - the instructions below depends on running this in a unix shell (e.g., ter
 docker run --rm -v /$(pwd):/home/DSCI_522_Group_302 v5y8/group_302_environment make -C /home/DSCI_522_Group_302 all
 ```
 
-3. Toreset the repo to a clean slate, , run the following command at the command line/terminal from the root directory of this project:
+3. To reset the repo to a clean slate, run the following command at the command line/terminal from the root directory of this project:
 
 ```
 docker run --rm -v /$(pwd):/home/DSCI_522_Group_302 v5y8/group_302_environment make -C /home/DSCI_522_Group_302 clean
 ```
 
-
 ### Method 2: Using Make 
  
-This method require all dependencies below to be installed before running the analysis. Run the following command in the terminal at the root directory of this project (script takes 15-20 minutes to fully execute):
+This method requires all dependencies listed below to be installed before running the analysis. Run the following command in the terminal at the root directory of this project to replicate the analysis:
 
 ```
 make all
@@ -59,13 +58,11 @@ To reset this repository to a clean state, run the following command in the term
 make clean
 ```
 
-
 ## Dependencies diagram of Makefile
 
-The relationships between the scripts, data files and final outputs are summarised in the dependency diagram below.
+The relationships between scripts, data files, images, and final outputs are summarised in the dependency diagram below:
 
 ![Makefile_diagram](img/Makefile.png)
-
 
 ## Dependencies
 
@@ -79,6 +76,9 @@ Python 3.7.5 and Python Packages:
 - [matplotlib 3.1.1](https://matplotlib.org/)
 - [seaborn 0.9.0](https://seaborn.pydata.org/)
 - [selenium 3.141.0](https://pypi.org/project/selenium/)
+
+ChromeDriver (for use with selenium package):
+ - [chromedriver 80.0.3987.16](https://chromedriver.chromium.org/)
 
 R version 3.6.1 and R packages:
 - [knitr 1.27.2](https://yihui.org/knitr/)
